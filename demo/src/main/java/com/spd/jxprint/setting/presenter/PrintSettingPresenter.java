@@ -75,8 +75,8 @@ public class PrintSettingPresenter extends BasePresenter<PrintSettingActivity, P
         BaseApp.getPrinterImpl().initPrinter();
         BaseApp.getPrinterImpl().printText(text);
         BaseApp.getPrinterImpl().setFont(0, 0, 0, 0, 0);
-        BaseApp.getPrinterImpl().setPrinter(PrinterConstants.Command.ALIGN, 0);
-        BaseApp.getPrinterImpl().setPrinter(PrinterConstants.Command.PRINT_AND_WAKE_PAPER_BY_LINE, 1);
+        BaseApp.getPrinterImpl().setPrinter(2, 0);
+        BaseApp.getPrinterImpl().setPrinter(1, 1);
     }
 
     /**
@@ -91,8 +91,8 @@ public class PrintSettingPresenter extends BasePresenter<PrintSettingActivity, P
         BaseApp.getPrinterImpl().initPrinter();
         BaseApp.getPrinterImpl().printText(text);
         BaseApp.getPrinterImpl().setFont(0, 0, 0, 0, 0);
-        BaseApp.getPrinterImpl().setPrinter(PrinterConstants.Command.ALIGN, 0);
-        BaseApp.getPrinterImpl().setPrinter(PrinterConstants.Command.PRINT_AND_WAKE_PAPER_BY_LINE, 1);
+        BaseApp.getPrinterImpl().setPrinter(2, 0);
+        BaseApp.getPrinterImpl().setPrinter(1, 1);
         byte[] bytes = new byte[]{0x0C};
         BaseApp.getPrinterImpl().sendBytesData(bytes);
     }

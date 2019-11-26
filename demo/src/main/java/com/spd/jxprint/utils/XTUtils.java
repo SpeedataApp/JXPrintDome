@@ -8,6 +8,8 @@ import com.printer.sdk.Table;
 import com.spd.jxprint.R;
 import com.spd.print.jx.impl.PrintImpl;
 
+import org.json.JSONArray;
+
 public class XTUtils {
 
     /**
