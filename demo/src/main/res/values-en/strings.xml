@@ -1,0 +1,143 @@
+<resources>
+    <string name="app_name">JXPrintDemo</string>
+    <string name="connect_printer">connect printer</string>
+    <string name="disconnect_printer">disconnect printer</string>
+    <string name="print_setting">printing setting</string>
+    <string name="print_text"> text printing</string>
+    <string name="print_barcode">barcode printing</string>
+    <string name="print_picture">picture printing</string>
+    <string name="system_update">system upgrade</string>
+    <string name="paper_feed">paper feed</string>
+    <string name="paper_back">paper back</string>
+    <string name="print_self_page">print self-check page</string>
+    <string name="fatigue_test">fatigue test</string>
+    <string name="start_fatigue_test">start</string>
+    <string name="stop_fatigue_test">stop</string>
+    <string name="normal_print">thermal paper printing test</string>
+    <string name="label_print">label paper printing test</string>
+
+    <string name="toast_success">connecting successfully</string>
+    <string name="toast_fail">connecting fail</string>
+    <string name="toast_close">connecting close</string>
+    <string name="toast_operation_success">success</string>
+    <string name="toast_operation_fail">fail</string>
+
+
+
+    <!--main-->
+    <string name="status_disconnect">disconnect</string>
+    <string name="device_name">device name：</string>
+    <string name="device_address">device address：</string>
+
+    <!--设置页面-->
+    <string name="title_paper_type">paper type：</string>
+    <string name="title_density">density：</string>
+    <string name="confirm_setting">confirm setting</string>
+    <string name="normal_paper">thermal paper</string>
+    <string name="label_paper">label paper</string>
+    <string name="print_normal_paper">normal thermal paper test</string>
+    <string name="print_label_paper">label paper test</string>
+    <string name="setting_update">UPDATE</string>
+
+    <string name="toast_error_tips">Please connect to the printer first!</string>
+
+    <!--文本打印页面-->
+    <string name="text_note_ex">receipt printing example </string>
+    <string name="text_code_ex">code page printing example</string>
+    <string name="text_table_ex">table printing example</string>
+    <string name="text_edit_title">edit the text</string>
+    <string name="text_check_hex">hexadecimal</string>
+    <string name="send_print">send print</string>
+    <string name="text_print_test">This is just a test!</string>
+    <string name="text_print_test_hex">0x54 0x68 0x69 0x73 0x20 0x69 0x73 0x20 0x6a 0x75 0x73 0x74 0x20 0x61 0x20 0x74 0x65 0x73 0x74 0x21 0x0a 0x0d</string>
+
+    <!--图片打印-->
+    <string name="picture_local_photo">choose picture print locally</string>
+    <string name="picture_bitmap_print">print the preset binary diagram</string>
+    <string name="picture_canvas_print">the canvas way</string>
+    <string name="print_bitmap_test">printing monochromatic bitmap demo：\n</string>
+    <string name="print_bitmap_end_test">printing finished</string>
+
+    <!--条码打印-->
+    <string name="barcode_print_ex">1D code printing examples</string>
+    <string name="qr_code_print_ex">QR code printing examples </string>
+    <string name="scan_print_ex">scan printing</string>
+    <string name="barcode_fragment">1D code</string>
+    <string name="qr_code_fragment">QR code</string>
+    <string name="code_type">code_type：</string>
+    <string name="code_content">edit barcode content：</string>
+    <string name="code_len">code length</string>
+    <string name="code_content_ex">012345678912</string>
+    <string name="scan_text">Put the QR code into the box, it will be automatically scanned</string>
+
+    <string name="toast_content_illegal">please enter valid characters\n</string>
+    <string name="toast_code39_legal">0–9、A–Z、$、%、+、blank</string>
+    <string name="toast_code_bar_legal">0–9、A–D、$、+、-、.、/、:</string>
+    <string name="toast_number_legal">0–9</string>
+    <string name="toast_content_length">content-length error</string>
+    <string name="toast_len_code128">(2 ≤ length ≤ 255)</string>
+    <string name="toast_len_upc">(11 ≤ length ≤ 12)</string>
+    <string name="toast_len_ean13">(12 ≤ length ≤ 13)</string>
+    <string name="toast_len_ean8">(7 ≤ length ≤ 8)</string>
+    <string name="toast_len_def">(1 ≤ length ≤ 255)</string>
+
+
+    <string name="barcode_print_head">print </string>
+    <string name="barcode_print_end"> :</string>
+
+    <!-- TextPrintActivity -->
+    <string name="shop_company_title">宁波月湖店</string>
+    <string name="shop_num">门店号：</string>
+    <string name="shop_note_num">单据号：</string>
+    <string name="shop_cashier_num">收银员：</string>
+    <string name="shop_receipt_date">单据日期：</string>
+    <string name="shop_print_time">打印时间：</string>
+    <string name="shop_goods_number">数量：</string>
+    <string name="shop_goods_total_price">总计：</string>
+    <string name="shop_payment">付款：</string>
+    <string name="shop_change">找零：</string>
+    <string name="shop_company_name">公司名称：江苏某某家居用品有限公司</string>
+    <string name="shop_company_site">公司网址：</string>
+    <string name="shop_company_address">地址：江苏省宁波市某某路某某号</string>
+    <string name="shop_company_tel">电话：</string>
+    <string name="shop_Service_Line">服务专线：</string>
+    <string name="shop_thanks">谢谢惠顾,欢迎再次光临！</string>
+    <string name="shop_demo">Demo 版本！</string>
+    <string name="note_title">品名;数量;单价;金额</string>
+    <string name="coffee">咖啡</string>
+    <string name="tableware">消毒餐具</string>
+    <string name="peanuts">油炸花生米</string>
+    <string name="cucumber">蒜泥黄瓜</string>
+    <string name="frog">干锅田鸡</string>
+    <string name="rice">米饭</string>
+    <string name="str_note">打印小票效果演示：</string>
+    <string name="str_show">演示：</string>
+    <string name="shop_receipt_num">单据</string>
+    <string name="bags">保鲜袋</string>
+    <string name="umbrella">雨伞</string>
+    <string name="hook">铁丝挂钩</string>
+
+    <string name="str_text">打印文本效果展示：</string>
+    <string name="str_text_left">文字居左效果演示abc123：</string>
+    <string name="str_text_right">文字居右效果演示abc123：</string>
+    <string name="str_text_center">文字居中效果演示abc123：</string>
+    <string name="str_text_strong">文字加粗效果演示abc123：</string>
+    <string name="str_text_underline">文字下划线效果演示abc123：</string>
+    <string name="str_text_print">效果演示abc123</string>
+    <string name="str_text_height">同行不同高效果演示：：</string>
+    <string name="times">倍</string>
+    <string name="bigger">放大</string>
+    <string name="bigger1">倍效果演示abc123</string>
+
+    <!-- TextPrintActivity -->
+    <string name="example_text">print presentation text：abc123</string>
+
+
+    <string name="progress_update">upgrading…</string>
+    <string name="progress_print">printing…</string>
+    <string name="dialog_setting_update">upgrade the firmware</string>
+    <string name="dialog_update_tips">An interruption in the upgrade process may cause the printer to not work properly. Are you sure you want to upgrade the firmware?</string>
+    <string name="ok">OK</string>
+    <string name="cancel">cancel</string>
+
+</resources>
