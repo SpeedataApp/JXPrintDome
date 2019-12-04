@@ -4,6 +4,7 @@ import android.widget.Toast;
 
 import com.printer.sdk.Barcode;
 import com.printer.sdk.PrinterConstants;
+import com.spd.jxprint.R;
 import com.spd.lib.mvp.BasePresenter;
 import com.spd.jxprint.application.BaseApp;
 import com.spd.jxprint.barcodeprint.PrintBarcodeActivity;
@@ -66,9 +67,9 @@ public class PrintBarcodePresenter extends BasePresenter<PrintBarcodeActivity, P
         }
         final String content = barcodeContent;
         if (barcodeType == 1) {
-            Toast.makeText(getView(), "一维码：" + barcodeContent, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getView(), getView().getResources().getString(R.string.barcode_fragment) + ":" + barcodeContent, Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(getView(), "二维码：" + barcodeContent, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getView(), getView().getResources().getString(R.string.qr_code_fragment) + ":" + barcodeContent, Toast.LENGTH_SHORT).show();
         }
         BaseApp.getPrinterImpl().setPrinter(2, 1);
         // 判端条码类型

@@ -23,7 +23,6 @@ import static com.printer.sdk.PrinterConstants.BarcodeType.DATAMATRIX;
 import static com.printer.sdk.PrinterConstants.BarcodeType.PDF417;
 
 
-
 /**
  * @author zzc
  */
@@ -101,7 +100,7 @@ public class QrCodeFragment extends LazyFragment implements View.OnClickListener
             byte[] bytes = new byte[]{PrinterConstants.BarcodeType.QRCODE, PDF417, DATAMATRIX};
             barcode = new Barcode(bytes[typeInt], width[typeInt], height[typeInt], 6, content);
             BaseApp.getPrinterImpl().setPrinter(2, 1);
-            BaseApp.getPrinterImpl().printText("打印 " + tvQrCodeType.getText().toString() + " 码效果展示：");
+            BaseApp.getPrinterImpl().printText(getString(R.string.barcode_print_head) + tvQrCodeType.getText().toString() + getString(R.string.barcode_print_end));
             BaseApp.getPrinterImpl().setPrinter(1, 2);
             BaseApp.getPrinterImpl().printBarCode(barcode);
             BaseApp.getPrinterImpl().setPrinter(1, 3);

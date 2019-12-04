@@ -141,7 +141,7 @@ public class BarcodeFragment extends LazyFragment implements View.OnClickListene
             if (typeInt < 9) {
                 barcode = new Barcode(bytes[typeInt], width, height, 2, content);
                 BaseApp.getPrinterImpl().setPrinter(2, 1);
-                BaseApp.getPrinterImpl().printText("打印 " + tvBarcodeType.getText().toString() + " 码效果展示：");
+                BaseApp.getPrinterImpl().printText(getString(R.string.barcode_print_head) + tvBarcodeType.getText().toString() + getString(R.string.barcode_print_end));
                 BaseApp.getPrinterImpl().setPrinter(1, 2);
                 BaseApp.getPrinterImpl().printBarCode(barcode);
                 BaseApp.getPrinterImpl().setPrinter(1, 3);
@@ -150,7 +150,7 @@ public class BarcodeFragment extends LazyFragment implements View.OnClickListene
                 for (int i = 0; i < typeInt; i++) {
                     barcode = new Barcode(bytes[i], width, height, 2, content);
                     BaseApp.getPrinterImpl().setPrinter(2, 1);
-                    BaseApp.getPrinterImpl().printText("打印 " + getResources().getStringArray(R.array.barcode1)[i] + " 码效果演示：");
+                    BaseApp.getPrinterImpl().printText(getString(R.string.barcode_print_head) + getResources().getStringArray(R.array.barcode1)[i] + getString(R.string.barcode_print_end));
                     BaseApp.getPrinterImpl().setPrinter(1, 2);
                     BaseApp.getPrinterImpl().printBarCode(barcode);
                     BaseApp.getPrinterImpl().setPrinter(1, 2);

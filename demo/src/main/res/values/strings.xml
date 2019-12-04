@@ -37,6 +37,7 @@
     <string name="label_paper">标签纸</string>
     <string name="print_normal_paper">普通热敏纸测试</string>
     <string name="print_label_paper">标签纸测试</string>
+    <string name="setting_update">升级固件</string>
 
     <string name="toast_error_tips">请先连接打印机</string>
 
@@ -49,7 +50,6 @@
     <string name="send_print">发送打印</string>
     <string name="text_print_test">This is just a test!</string>
     <string name="text_print_test_hex">0x54 0x68 0x69 0x73 0x20 0x69 0x73 0x20 0x6a 0x75 0x73 0x74 0x20 0x61 0x20 0x74 0x65 0x73 0x74 0x21 0x0a 0x0d</string>
-    <string name="print">打印</string>
 
     <!--图片打印-->
     <string name="picture_local_photo">本地选择图片打印</string>
@@ -81,14 +81,10 @@
     <string name="toast_len_ean8">(7 ≤ length ≤ 8)</string>
     <string name="toast_len_def">(1 ≤ length ≤ 255)</string>
 
+    <string name="barcode_print_head">打印 </string>
+    <string name="barcode_print_end"> 码效果展示：</string>
+
     <!-- TextPrintActivity -->
-    <string name="text_input">请输入文字:</string>
-    <string name="hex_close">十六进制关</string>
-    <string name="hex_open">十六进制开</string>
-    <string name="content_to_print">请输入要打印的文字。。。</string>
-    <string name="print_note">小票打印示例</string>
-    <string name="example_for_codepage_print">代码页打印示例</string>
-    <string name="company_name">打印机公司</string>
     <string name="shop_company_title">宁波月湖店</string>
     <string name="shop_num">门店号：</string>
     <string name="shop_note_num">单据号：</string>

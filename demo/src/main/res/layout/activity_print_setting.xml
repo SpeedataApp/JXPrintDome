@@ -18,13 +18,20 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/iv_update"
-        android:layout_width="80dp"
+    <TextView
+        android:id="@+id/tv_update"
+        android:layout_width="90dp"
         android:layout_height="34dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="14dp"
-        android:background="@mipmap/setting_update"
+        android:background="@drawable/bg_blue_selector"
+        android:drawableStart="@mipmap/setting_update"
+        android:gravity="center"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:text="@string/setting_update"
+        android:textColor="#ffffff"
+        android:textSize="12sp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -38,7 +45,7 @@
         android:textColor="@color/white_text"
         android:textSize="14sp"
         app:layout_constraintLeft_toRightOf="@id/iv_printer_img"
-        app:layout_constraintTop_toBottomOf="@id/iv_update" />
+        app:layout_constraintTop_toBottomOf="@id/tv_update" />
 
     <TextView
         android:id="@+id/tv_status_name"
@@ -49,7 +56,7 @@
         android:textColor="@color/white_text"
         android:textSize="14sp"
         app:layout_constraintLeft_toRightOf="@id/tv_device_name"
-        app:layout_constraintTop_toBottomOf="@id/iv_update" />
+        app:layout_constraintTop_toBottomOf="@id/tv_update" />
 
     <TextView
         android:id="@+id/tv_device_address"

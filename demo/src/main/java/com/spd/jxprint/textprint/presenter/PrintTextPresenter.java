@@ -83,7 +83,7 @@ public class PrintTextPresenter extends BasePresenter<PrintTextActivity, PrintTe
 
         if (cTypeId != 47) {
 
-            BaseApp.getPrinterImpl().printText(getView().getResources().getString(R.string.print) + cType + getView().getResources().getString(R.string.str_show));
+            BaseApp.getPrinterImpl().printText(getView().getResources().getString(R.string.barcode_print_head) + cType + getView().getResources().getString(R.string.str_show));
             BaseApp.getPrinterImpl().setPrinter(1, 3);
 
             BaseApp.getPrinterImpl().sendBytesData(new byte[]{(byte) 0x1c, (byte) 0x2E});
@@ -99,7 +99,7 @@ public class PrintTextPresenter extends BasePresenter<PrintTextActivity, PrintTe
             for (cTypeId = 0; cTypeId < 46; cTypeId++) {
                 if (cTypeId > 14 || cTypeId < 11) {
 
-                    BaseApp.getPrinterImpl().printText(getView().getResources().getString(R.string.print) + cType + getView().getResources().getString(R.string.str_show));
+                    BaseApp.getPrinterImpl().printText(getView().getResources().getString(R.string.barcode_print_head) + cType + getView().getResources().getString(R.string.str_show));
                     BaseApp.getPrinterImpl().setPrinter(1, 3);
 
                     BaseApp.getPrinterImpl().sendBytesData(new byte[]{(byte) 0x1c, (byte) 0x2E});

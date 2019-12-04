@@ -58,7 +58,7 @@ public class PrintSettingActivity extends BaseMvpActivity<PrintSettingPresenter>
 
     @Override
     protected void initView(@Nullable Bundle savedInstanceState) {
-        findViewById(R.id.iv_update).setOnClickListener(this);
+        findViewById(R.id.tv_update).setOnClickListener(this);
         findViewById(R.id.rl_feed_paper).setOnClickListener(this);
         findViewById(R.id.rl_back_paper).setOnClickListener(this);
         btnPrintTest = findViewById(R.id.btn_print_test);
@@ -87,7 +87,7 @@ public class PrintSettingActivity extends BaseMvpActivity<PrintSettingPresenter>
     public void onClick(View v) {
         try {
             switch (v.getId()) {
-                case R.id.iv_update:
+                case R.id.tv_update:
                     UpdateDialog updateDialog = new UpdateDialog(this);
                     updateDialog.setOnSureListener(new UpdateDialog.OnSureListener() {
                         @Override
