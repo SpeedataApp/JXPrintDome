@@ -22,15 +22,15 @@ public class XTUtils {
         mPrinter.initPrinter();
 
         mPrinter.setFont(0, 0, 0, 0, 0);
-        mPrinter.setPrinter(Command.ALIGN, Command.ALIGN_LEFT);
+        mPrinter.setPrinter(2, 0);
         mPrinter.printText(resources.getString(R.string.str_note));
         mPrinter.setPrinter(Command.PRINT_AND_WAKE_PAPER_BY_LINE, 2);
 
-        mPrinter.setPrinter(Command.ALIGN, Command.ALIGN_CENTER);
+        mPrinter.setPrinter(2, Command.ALIGN_CENTER);
         mPrinter.setFont(0, 1, 1, 0, 0);
         mPrinter.printText(resources.getString(R.string.shop_company_title) + "\n");
 
-        mPrinter.setPrinter(Command.ALIGN, Command.ALIGN_LEFT);
+        mPrinter.setPrinter(2, Command.ALIGN_LEFT);
         // 字号使用默认
         mPrinter.setFont(0, 0, 0, 0, 0);
         // 打印
@@ -40,13 +40,13 @@ public class XTUtils {
 
         mPrinter.printText(getText2(resources));
 
-        mPrinter.setPrinter(Command.ALIGN, Command.ALIGN_CENTER);
+        mPrinter.setPrinter(2, Command.ALIGN_CENTER);
         mPrinter.setFont(0, 0, 1, 0, 0);
         mPrinter.printText(resources.getString(R.string.shop_thanks) + "\n");
         mPrinter.printText(resources.getString(R.string.shop_demo) + "\n\n\n");
 
         mPrinter.setFont(0, 0, 0, 0, 0);
-        mPrinter.setPrinter(Command.ALIGN, Command.ALIGN_LEFT);
+        mPrinter.setPrinter(2, Command.ALIGN_LEFT);
         mPrinter.setPrinter(Command.PRINT_AND_WAKE_PAPER_BY_LINE, 3);
     }
 
@@ -108,20 +108,20 @@ public class XTUtils {
 
 
         mPrinter.setFont(0, 0, 0, 0, 0);
-        mPrinter.setPrinter(Command.ALIGN, 0);
+        mPrinter.setPrinter(2, 0);
         mPrinter.printText(resources.getString(R.string.str_text_left));
         mPrinter.setPrinter(Command.PRINT_AND_WAKE_PAPER_BY_LINE, 2);// ��2��
 
 
-        mPrinter.setPrinter(Command.ALIGN, 1);
+        mPrinter.setPrinter(2, 1);
         mPrinter.printText(resources.getString(R.string.str_text_center));
         mPrinter.setPrinter(Command.PRINT_AND_WAKE_PAPER_BY_LINE, 2);// ��2��
 
-        mPrinter.setPrinter(Command.ALIGN, 2);
+        mPrinter.setPrinter(2, 2);
         mPrinter.printText(resources.getString(R.string.str_text_right));
         mPrinter.setPrinter(Command.PRINT_AND_WAKE_PAPER_BY_LINE, 3); // ��3��
 
-        mPrinter.setPrinter(Command.ALIGN, 0);
+        mPrinter.setPrinter(2, 0);
         mPrinter.setFont(0, 0, 0, 1, 0);
         mPrinter.printText(resources.getString(R.string.str_text_strong));
         mPrinter.setPrinter(Command.PRINT_AND_WAKE_PAPER_BY_LINE, 2); // ��2��
@@ -156,7 +156,7 @@ public class XTUtils {
         }
 
         mPrinter.setFont(0, 0, 0, 0, 0);
-        mPrinter.setPrinter(Command.ALIGN, 0);
+        mPrinter.setPrinter(2, 0);
         mPrinter.setPrinter(Command.PRINT_AND_WAKE_PAPER_BY_LINE, 3);
     }
 
@@ -172,7 +172,7 @@ public class XTUtils {
         mPrinter.initPrinter();
         mPrinter.printText(resources.getString(R.string.str_text));
         mPrinter.setFont(0, 0, 0, 0, 0);
-        mPrinter.setPrinter(Command.ALIGN, 0);
+        mPrinter.setPrinter(2, 0);
         mPrinter.setPrinter(Command.PRINT_AND_WAKE_PAPER_BY_LINE, 1);
         setAdjusting(mPrinter);
     }
@@ -181,7 +181,7 @@ public class XTUtils {
         mPrinter.initPrinter();
         mPrinter.printText(resources.getString(R.string.str_text));
         mPrinter.setFont(0, 0, 0, 0, 0);
-        mPrinter.setPrinter(Command.ALIGN, 0);
+        mPrinter.setPrinter(2, 0);
         mPrinter.setPrinter(Command.PRINT_AND_WAKE_PAPER_BY_LINE, 1);
     }
 

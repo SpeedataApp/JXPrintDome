@@ -80,6 +80,7 @@ public class PrintTextActivity extends BaseMvpActivity<PrintTextPresenter> imple
                     break;
             }
         } catch (RuntimeException e) {
+            e.printStackTrace();
             ToastUtil.customToastView(mContext, getString(R.string.toast_error_tips), Toast.LENGTH_SHORT
                     , (TextView) LayoutInflater.from(mContext).inflate(R.layout.layout_toast, null));
         }

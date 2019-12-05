@@ -163,7 +163,7 @@ public class PrintSettingPresenter extends BasePresenter<PrintSettingActivity, P
                     e.printStackTrace();
                 }
             }
-        }, 0, 30, TimeUnit.SECONDS);
+        }, 0, 6, TimeUnit.SECONDS);
 
     }
 
