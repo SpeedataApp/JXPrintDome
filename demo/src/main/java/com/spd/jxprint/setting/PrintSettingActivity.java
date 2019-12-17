@@ -37,7 +37,7 @@ public class PrintSettingActivity extends BaseMvpActivity<PrintSettingPresenter>
 
     private AlertDialog dialog;
     private TextView tvPaperType, tvDensity, statusName, statusAddress, tvFatigue;
-    private Button btnConnect, btnPrintTest;
+    private Button btnConnect, btnPrintTest, btnAligning;
     private SharedXmlUtil mSharedXmlUtil;
     /**
      * 是否正在打印
@@ -76,6 +76,8 @@ public class PrintSettingActivity extends BaseMvpActivity<PrintSettingPresenter>
         statusName = findViewById(R.id.tv_status_name);
         statusAddress = findViewById(R.id.tv_status_address);
         tvFatigue = findViewById(R.id.tv_fatigue_test);
+        btnAligning = findViewById(R.id.btn_aligning);
+        btnAligning.setOnClickListener(this);
     }
 
     @Override
@@ -105,13 +107,10 @@ public class PrintSettingActivity extends BaseMvpActivity<PrintSettingPresenter>
                     mPresenter.setPaperBack();
                     break;
                 case R.id.btn_print_test:
-                    switch (mSharedXmlUtil.read("paper_type", 0)) {
-                        case 1:
-                            mPresenter.printLabelTest(getString(R.string.example_text));
-                            break;
-                        default:
-                            mPresenter.printNormalTest(getString(R.string.example_text));
-                            break;
+                    if (mSharedXmlUtil.read("paper_type", 0) == 0) {
+                        mPresenter.printNormalTest(getString(R.string.example_text));
+                    } else {
+                        mPresenter.printLabelTest(getString(R.string.example_text));
                     }
                     break;
                 case R.id.rl_print_self:
@@ -160,6 +159,9 @@ public class PrintSettingActivity extends BaseMvpActivity<PrintSettingPresenter>
                     Intent intentDensity = new Intent(this, PopupWindowActivity.class);
                     intentDensity.putExtra("setting", "density");
                     startActivityForResult(intentDensity, 2);
+                    break;
+                case R.id.btn_aligning:
+                    mPresenter.printAligning();
                     break;
                 default:
                     break;
@@ -236,6 +238,9 @@ public class PrintSettingActivity extends BaseMvpActivity<PrintSettingPresenter>
         statusName.setText(BaseApp.deviceName);
         statusAddress.setText(BaseApp.deviceAddress);
         btnConnect.setText(getResources().getString(R.string.disconnect_printer));
+        int densityInt = mSharedXmlUtil.read("paper_type", 1);
+        int typeInt = mSharedXmlUtil.read("density", 1);
+        mPresenter.initPrint(typeInt, densityInt);
         ToastUtil.customToastView(mContext, getString(R.string.toast_success), Toast.LENGTH_SHORT
                 , (TextView) LayoutInflater.from(mContext).inflate(R.layout.layout_toast, null));
     }
@@ -261,8 +266,10 @@ public class PrintSettingActivity extends BaseMvpActivity<PrintSettingPresenter>
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mSharedXmlUtil = SharedXmlUtil.getInstance(this, "setting");
-        setPaperType(mSharedXmlUtil.read("paper_type", 1));
-        setDensity(mSharedXmlUtil.read("density", 1));
+        densityInt = mSharedXmlUtil.read("paper_type", 1);
+        typeInt = mSharedXmlUtil.read("density", 1);
+        setPaperType(densityInt);
+        setDensity(typeInt);
     }
 
     @Override
@@ -282,10 +289,12 @@ public class PrintSettingActivity extends BaseMvpActivity<PrintSettingPresenter>
             case 1:
                 tvPaperType.setText(getString(R.string.label_paper));
                 btnPrintTest.setText(getString(R.string.print_label_paper));
+                btnAligning.setVisibility(View.VISIBLE);
                 break;
             default:
                 tvPaperType.setText(getString(R.string.normal_paper));
                 btnPrintTest.setText(getString(R.string.print_normal_paper));
+                btnAligning.setVisibility(View.GONE);
                 break;
         }
     }

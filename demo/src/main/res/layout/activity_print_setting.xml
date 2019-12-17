@@ -101,9 +101,11 @@
         android:layout_marginTop="180dp"
         android:background="@drawable/bg_main_body"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         tools:ignore="contentDescription" />
 
     <ImageView
@@ -242,7 +244,7 @@
     <RelativeLayout
         android:id="@+id/rl_feed_paper"
         android:layout_width="160dp"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/bg_layout_btn_selector"
         app:layout_constraintLeft_toLeftOf="@id/setting_param"
@@ -255,7 +257,7 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:background="@mipmap/setting_feed" />
 
         <TextView
@@ -273,7 +275,7 @@
     <RelativeLayout
         android:id="@+id/rl_back_paper"
         android:layout_width="160dp"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:background="@drawable/bg_layout_btn_selector"
         app:layout_constraintRight_toRightOf="@id/setting_param"
@@ -286,7 +288,7 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:background="@mipmap/setting_back" />
 
         <TextView
@@ -304,7 +306,7 @@
     <RelativeLayout
         android:id="@+id/rl_print_self"
         android:layout_width="160dp"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/bg_layout_btn_selector"
         app:layout_constraintLeft_toLeftOf="@id/setting_param"
@@ -317,7 +319,7 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:background="@mipmap/setting_self" />
 
         <TextView
@@ -334,7 +336,7 @@
     <RelativeLayout
         android:id="@+id/rl_fatigue_test"
         android:layout_width="160dp"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/bg_layout_btn_selector"
         app:layout_constraintRight_toRightOf="@id/setting_param"
@@ -347,7 +349,7 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:background="@mipmap/setting_fatigue" />
 
         <LinearLayout
@@ -374,7 +376,18 @@
                 android:textSize="14sp" />
         </LinearLayout>
 
-
     </RelativeLayout>
+    <Button
+        android:id="@+id/btn_aligning"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:background="@drawable/btn_light_blue_selector"
+        android:text="@string/btn_aligning"
+        android:textColor="@color/blue_text"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/setting_param"
+        app:layout_constraintRight_toRightOf="@id/setting_param"
+        app:layout_constraintTop_toBottomOf="@id/rl_fatigue_test" />
 
 </android.support.constraint.ConstraintLayout>

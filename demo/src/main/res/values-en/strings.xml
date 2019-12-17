@@ -38,6 +38,7 @@
     <string name="print_normal_paper">normal thermal paper test</string>
     <string name="print_label_paper">label paper test</string>
     <string name="setting_update">UPDATE</string>
+    <string name="btn_aligning">Label aligning</string>
 
     <string name="toast_error_tips">Please connect to the printer first!</string>
 

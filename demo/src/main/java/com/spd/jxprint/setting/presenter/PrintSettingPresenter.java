@@ -2,9 +2,19 @@ package com.spd.jxprint.setting.presenter;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.os.Looper;
+import android.os.SystemClock;
 import android.util.Log;
 
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
+import com.printer.sdk.CanvasPrint;
+import com.printer.sdk.FontProperty;
 import com.printer.sdk.PrinterConstants;
 import com.spd.jxprint.application.BaseApp;
 import com.spd.jxprint.setting.PrintSettingActivity;
@@ -12,6 +22,8 @@ import com.spd.jxprint.setting.contract.PrintSettingContract;
 import com.spd.jxprint.setting.model.PrintSettingModel;
 import com.spd.jxprint.utils.XTUtils;
 import com.spd.lib.mvp.BasePresenter;
+import com.spd.print.jx.constant.ParamsConstant;
+import com.spd.print.jx.utils.PictureUtils;
 
 import org.apache.commons.lang3.concurrent.BasicThreadFactory;
 
@@ -58,6 +70,10 @@ public class PrintSettingPresenter extends BasePresenter<PrintSettingActivity, P
         BaseApp.getPrinterImpl().closeConnect();
     }
 
+    public void initPrint(int type, int density) {
+        BaseApp.getPrinterImpl().setAllParams(ParamsConstant.paperType(type), ParamsConstant.density(density));
+    }
+
     public void setPaperFeed() {
         BaseApp.getPrinterImpl().setPaperFeed(2);
     }
@@ -86,23 +102,57 @@ public class PrintSettingPresenter extends BasePresenter<PrintSettingActivity, P
      */
     public void printLabelTest(String text) {
         BaseApp.getPrinterImpl().initPrinter();
-        byte[] backBytes = new byte[]{0x1B, 0x4B, (byte) (10 * 8), 0x1B, 0x4A, (byte) 8};
-        BaseApp.getPrinterImpl().sendBytesData(backBytes);
+        BaseApp.getPrinterImpl().setPaperBack(10);
+        BaseApp.getPrinterImpl().setPaperFeed(1);
         BaseApp.getPrinterImpl().initPrinter();
         BaseApp.getPrinterImpl().printText(text);
-        BaseApp.getPrinterImpl().setFont(0, 0, 0, 0, 0);
-        BaseApp.getPrinterImpl().setPrinter(2, 0);
-        BaseApp.getPrinterImpl().setPrinter(1, 1);
-        byte[] bytes = new byte[]{0x0C};
-        BaseApp.getPrinterImpl().sendBytesData(bytes);
+        test();
+        BaseApp.getPrinterImpl().initPrinter();
+        BaseApp.getPrinterImpl().searchGap();
+    }
+
+    public void test() {
+        //生成二维码图片
+        Bitmap bitmapQrCode = PictureUtils.createBitmapQrCode("物料编号",120,120);
+        //创建画布
+        CanvasPrint cp = new CanvasPrint();
+        //初始化画布
+        cp.init(PrinterConstants.PrinterType.M21);
+        //创建字体
+        FontProperty fp = new FontProperty();
+        //字体属性赋值 此处参数个数根据SDK版本不同，有略微差别，酌情增减。
+        fp.setFont(false, false, false, false, 26, null);
+        //设置字体
+        cp.setFontProperty(fp);
+        cp.drawText(150, 30, "数量:");
+
+        fp.setFont(false, false, false, false, 20, null);
+        cp.setFontProperty(fp);
+        //将文字画到画布上指定坐标处
+        cp.drawText(10, 30, "物料名称：");
+        cp.drawText(10, 60, "wuliaomingcheng");
+        cp.drawText(10, 120, "规格型号");
+        cp.drawText(10, 150, "guigexinghao");
+        cp.drawText(220, 150, "wuliaobianhao");
+        if (bitmapQrCode != null) {
+            cp.drawImage(200, 0, bitmapQrCode);
+        }
+        //打印画布
+        BaseApp.getPrinterImpl().printImage(cp.getCanvasImage(), 3, 0, false);
+    }
+
+    /**
+     * 标签纸对齐缝隙
+     */
+    public void printAligning() {
+        BaseApp.getPrinterImpl().searchGap();
     }
 
     /**
      * 打印自检页
      */
     public void printSelfCheck() {
-        byte[] selfCheck = new byte[]{0x1d, 0x28, 0x41, 0x02, 0x00, 0x00, 0x02};
-        BaseApp.getPrinterImpl().sendBytesData(selfCheck);
+        BaseApp.getPrinterImpl().printSelfCheck();
     }
 
     /**
@@ -113,7 +163,7 @@ public class PrintSettingPresenter extends BasePresenter<PrintSettingActivity, P
     public void setSensitivity(String sensitivity) {
         if (sensitivity.isEmpty()) {
             int sen = Integer.parseInt(sensitivity);
-            BaseApp.getPrinterImpl().sendBytesData(new byte[]{0x1F, 0x11, 0x1F, 0x46, (byte) sen, 0x1F, 0x1F});
+            BaseApp.getPrinterImpl().setSensitivity(sen);
         }
     }
 
@@ -188,9 +238,9 @@ public class PrintSettingPresenter extends BasePresenter<PrintSettingActivity, P
                 f.mkdir();
             }
             //复制升级文件到指定目录
-            copyFilesFromassets(getView(), "T581U0.73-V0.16-sbtV05.bin", "/sdcard/Android/data/updata/T581U0.73-V0.16-sbtV05.bin");
+            copyFilesFromassets(getView(), "T581U0.73-V0.16-sbtV06.bin", "/sdcard/Android/data/updata/T581U0.73-V0.16-sbtV06.bin");
             //获取升级文件
-            File fileParent = new File("/sdcard/Android/data/updata/T581U0.73-V0.16-sbtV05.bin");
+            File fileParent = new File("/sdcard/Android/data/updata/T581U0.73-V0.16-sbtV06.bin");
             try {
                 in = new FileInputStream(fileParent);
 
@@ -200,7 +250,7 @@ public class PrintSettingPresenter extends BasePresenter<PrintSettingActivity, P
             }
             int a = 0;
             try {
-                a = BaseApp.getPrinterImpl().update(in, "35 31 34 30 34");
+                a = BaseApp.getPrinterImpl().update(in, "35 31 33 35 32");
                 if (a == -2) {
                     getView().onUpdateSuccess();
                 } else {
