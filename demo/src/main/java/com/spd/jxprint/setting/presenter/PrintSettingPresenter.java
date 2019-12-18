@@ -130,7 +130,11 @@ public class PrintSettingPresenter extends BasePresenter<PrintSettingActivity, P
         cp.setFontProperty(fp);
         //将文字画到画布上指定坐标处
         cp.drawText(10, 30, "物料名称：");
-        cp.drawText(10, 60, "wuliaomingcheng");
+        try {
+            cp.drawText(10,60,150,40,"物料名称wuliaomingcheng物料名称wuliaomingcheng");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         cp.drawText(10, 120, "规格型号");
         cp.drawText(10, 150, "guigexinghao");
         cp.drawText(220, 150, "wuliaobianhao");
