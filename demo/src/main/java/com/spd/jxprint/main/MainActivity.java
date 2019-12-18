@@ -104,8 +104,8 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements View
         statusAddress.setText(BaseApp.deviceAddress);
         btnConnect.setText(getResources().getString(R.string.disconnect_printer));
         mIvConnect.setImageResource(R.mipmap.home_connect);
-        int densityInt = mSharedXmlUtil.read("paper_type", 1);
-        int typeInt = mSharedXmlUtil.read("density", 1);
+        int densityInt = mSharedXmlUtil.read("density", 1);
+        int typeInt = mSharedXmlUtil.read("paper_type", 1);
         mPresenter.initPrint(typeInt, densityInt);
         ToastUtil.customToastView(mContext, getString(R.string.toast_success), Toast.LENGTH_SHORT
                 , (TextView) LayoutInflater.from(mContext).inflate(R.layout.layout_toast, null));
@@ -137,9 +137,9 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements View
     @Override
     protected void onResume() {
         super.onResume();
-        if (BaseApp.isConnection){
+        if (BaseApp.isConnection) {
             btnConnect.setText(getResources().getString(R.string.disconnect_printer));
-        }else {
+        } else {
             btnConnect.setText(getResources().getString(R.string.connect_printer));
         }
         statusName.setText(BaseApp.deviceName);

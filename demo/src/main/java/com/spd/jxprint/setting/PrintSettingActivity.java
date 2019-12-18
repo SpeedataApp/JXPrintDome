@@ -238,8 +238,8 @@ public class PrintSettingActivity extends BaseMvpActivity<PrintSettingPresenter>
         statusName.setText(BaseApp.deviceName);
         statusAddress.setText(BaseApp.deviceAddress);
         btnConnect.setText(getResources().getString(R.string.disconnect_printer));
-        int densityInt = mSharedXmlUtil.read("paper_type", 1);
-        int typeInt = mSharedXmlUtil.read("density", 1);
+        densityInt = mSharedXmlUtil.read("density", 1);
+        typeInt = mSharedXmlUtil.read("paper_type", 1);
         mPresenter.initPrint(typeInt, densityInt);
         ToastUtil.customToastView(mContext, getString(R.string.toast_success), Toast.LENGTH_SHORT
                 , (TextView) LayoutInflater.from(mContext).inflate(R.layout.layout_toast, null));
@@ -266,10 +266,10 @@ public class PrintSettingActivity extends BaseMvpActivity<PrintSettingPresenter>
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mSharedXmlUtil = SharedXmlUtil.getInstance(this, "setting");
-        densityInt = mSharedXmlUtil.read("paper_type", 1);
-        typeInt = mSharedXmlUtil.read("density", 1);
-        setPaperType(densityInt);
-        setDensity(typeInt);
+        densityInt = mSharedXmlUtil.read("density", 1);
+        typeInt = mSharedXmlUtil.read("paper_type", 1);
+        setPaperType(typeInt);
+        setDensity(densityInt);
     }
 
     @Override
