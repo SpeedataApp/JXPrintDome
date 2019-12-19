@@ -102,9 +102,6 @@ public class PrintSettingPresenter extends BasePresenter<PrintSettingActivity, P
      */
     public void printLabelTest(String text) {
         BaseApp.getPrinterImpl().initPrinter();
-        BaseApp.getPrinterImpl().setPaperBack(10);
-        BaseApp.getPrinterImpl().setPaperFeed(1);
-        BaseApp.getPrinterImpl().initPrinter();
         BaseApp.getPrinterImpl().printText(text);
         test();
         BaseApp.getPrinterImpl().initPrinter();

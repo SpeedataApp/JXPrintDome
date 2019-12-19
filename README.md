@@ -16,7 +16,7 @@ allprojects {
 ```xml
 	dependencies {
 		implementation 'com.github.SpeedataG:Device:1.6.8'
-		implementation 'com.github.SpeedataG:Print:1.0.1'
+		implementation 'com.github.SpeedataG:Print:1.0.5'
 	}
 
  ```
