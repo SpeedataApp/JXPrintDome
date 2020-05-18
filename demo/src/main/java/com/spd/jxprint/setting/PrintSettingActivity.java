@@ -90,15 +90,20 @@ public class PrintSettingActivity extends BaseMvpActivity<PrintSettingPresenter>
         try {
             switch (v.getId()) {
                 case R.id.tv_update:
-                    UpdateDialog updateDialog = new UpdateDialog(this);
-                    updateDialog.setOnSureListener(new UpdateDialog.OnSureListener() {
-                        @Override
-                        public void click() {
-                            progressDialogShow();
-                            mPresenter.systemUpdate();
-                        }
-                    });
-                    updateDialog.show();
+                    if (!isPrint) {
+                        UpdateDialog updateDialog = new UpdateDialog(this);
+                        updateDialog.setOnSureListener(new UpdateDialog.OnSureListener() {
+                            @Override
+                            public void click() {
+                                progressDialogShow();
+                                mPresenter.systemUpdate();
+                            }
+                        });
+                        updateDialog.show();
+                    } else {
+                        ToastUtil.customToastView(mContext, getString(R.string.progress_print), Toast.LENGTH_SHORT
+                                , (TextView) LayoutInflater.from(mContext).inflate(R.layout.layout_toast, null));
+                    }
                     break;
                 case R.id.rl_feed_paper:
                     mPresenter.setPaperFeed();
@@ -129,8 +134,9 @@ public class PrintSettingActivity extends BaseMvpActivity<PrintSettingPresenter>
                     if (!BaseApp.isConnection) {
                         ToastUtil.customToastView(mContext, getString(R.string.toast_error_tips), Toast.LENGTH_SHORT
                                 , (TextView) LayoutInflater.from(mContext).inflate(R.layout.layout_toast, null));
+                        return;
                     }
-                    if (isPrint || !BaseApp.isConnection) {
+                    if (isPrint) {
                         isPrint = false;
                         mPresenter.stopFatigueTest();
                         tvFatigue.setText(getString(R.string.start_fatigue_test));
@@ -144,6 +150,11 @@ public class PrintSettingActivity extends BaseMvpActivity<PrintSettingPresenter>
                     if (!BaseApp.isConnection) {
                         mPresenter.connectPrinter();
                     } else {
+                        if (isPrint) {
+                            isPrint = false;
+                            mPresenter.stopFatigueTest();
+                            tvFatigue.setText(getString(R.string.start_fatigue_test));
+                        }
                         mPresenter.disconnectPrinter();
                         statusName.setText(getResources().getString(R.string.status_disconnect));
                         statusAddress.setText(getResources().getString(R.string.status_disconnect));

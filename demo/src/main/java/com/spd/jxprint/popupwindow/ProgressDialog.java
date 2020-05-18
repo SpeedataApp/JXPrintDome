@@ -19,7 +19,7 @@ public class ProgressDialog {
     private static ProgressDialog mProgressDialog;
 
     public static ProgressDialog getInstance(Context context) {
-        if (dialog == null) {
+        if (mProgressDialog == null) {
             mProgressDialog = new ProgressDialog(context);
         }
         return mProgressDialog;
@@ -55,6 +55,8 @@ public class ProgressDialog {
     public void dismiss() {
         if (dialog != null && dialog.isShowing()) {
             dialog.dismiss();
+            dialog = null;
+            releaseInstance();
         }
     }
 
