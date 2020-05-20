@@ -136,6 +136,7 @@
 
     <string name="progress_update">upgrading…</string>
     <string name="progress_print">printing…</string>
+    <string name="progress_disconnect">Please disconnect first</string>
     <string name="dialog_setting_update">upgrade the firmware</string>
     <string name="dialog_update_tips">An interruption in the upgrade process may cause the printer to not work properly. Are you sure you want to upgrade the firmware?</string>
     <string name="ok">OK</string>

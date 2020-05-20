@@ -90,18 +90,19 @@ public class PrintSettingActivity extends BaseMvpActivity<PrintSettingPresenter>
         try {
             switch (v.getId()) {
                 case R.id.tv_update:
-                    if (!isPrint) {
+                    if (!BaseApp.isConnection) {
                         UpdateDialog updateDialog = new UpdateDialog(this);
                         updateDialog.setOnSureListener(new UpdateDialog.OnSureListener() {
                             @Override
                             public void click() {
                                 progressDialogShow();
+                                mPresenter.connectPrinter();
                                 mPresenter.systemUpdate();
                             }
                         });
                         updateDialog.show();
                     } else {
-                        ToastUtil.customToastView(mContext, getString(R.string.progress_print), Toast.LENGTH_SHORT
+                        ToastUtil.customToastView(mContext, getString(R.string.progress_disconnect), Toast.LENGTH_SHORT
                                 , (TextView) LayoutInflater.from(mContext).inflate(R.layout.layout_toast, null));
                     }
                     break;
