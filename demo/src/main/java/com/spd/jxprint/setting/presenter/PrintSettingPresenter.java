@@ -232,7 +232,7 @@ public class PrintSettingPresenter extends BasePresenter<PrintSettingActivity, P
         public void run() {
             super.run();
             Looper.prepare();
-            SystemClock.sleep(1000);
+            SystemClock.sleep(2000);
             InputStream in = null;
             //创建文件夹
             File f = new File("/sdcard/Android/data/updata");

@@ -107,12 +107,27 @@ public class PrintSettingActivity extends BaseMvpActivity<PrintSettingPresenter>
                     }
                     break;
                 case R.id.rl_feed_paper:
+                    if (isPrint) {
+                        ToastUtil.customToastView(mContext, getString(R.string.progress_print), Toast.LENGTH_SHORT
+                                , (TextView) LayoutInflater.from(mContext).inflate(R.layout.layout_toast, null));
+                        return;
+                    }
                     mPresenter.setPaperFeed();
                     break;
                 case R.id.rl_back_paper:
+                    if (isPrint) {
+                        ToastUtil.customToastView(mContext, getString(R.string.progress_print), Toast.LENGTH_SHORT
+                                , (TextView) LayoutInflater.from(mContext).inflate(R.layout.layout_toast, null));
+                        return;
+                    }
                     mPresenter.setPaperBack();
                     break;
                 case R.id.btn_print_test:
+                    if (isPrint) {
+                        ToastUtil.customToastView(mContext, getString(R.string.progress_print), Toast.LENGTH_SHORT
+                                , (TextView) LayoutInflater.from(mContext).inflate(R.layout.layout_toast, null));
+                        return;
+                    }
                     if (mSharedXmlUtil.read("paper_type", 0) == 0) {
                         mPresenter.printNormalTest(getString(R.string.example_text));
                     } else {
@@ -120,9 +135,19 @@ public class PrintSettingActivity extends BaseMvpActivity<PrintSettingPresenter>
                     }
                     break;
                 case R.id.rl_print_self:
+                    if (isPrint) {
+                        ToastUtil.customToastView(mContext, getString(R.string.progress_print), Toast.LENGTH_SHORT
+                                , (TextView) LayoutInflater.from(mContext).inflate(R.layout.layout_toast, null));
+                        return;
+                    }
                     mPresenter.printSelfCheck();
                     break;
                 case R.id.btn_set_density:
+                    if (isPrint) {
+                        ToastUtil.customToastView(mContext, getString(R.string.progress_print), Toast.LENGTH_SHORT
+                                , (TextView) LayoutInflater.from(mContext).inflate(R.layout.layout_toast, null));
+                        return;
+                    }
                     mPresenter.setDensity(densityInt);
                     mSharedXmlUtil.write("density", densityInt);
                     break;
@@ -163,16 +188,31 @@ public class PrintSettingActivity extends BaseMvpActivity<PrintSettingPresenter>
                     }
                     break;
                 case R.id.rl_paper_type:
+                    if (isPrint) {
+                        ToastUtil.customToastView(mContext, getString(R.string.progress_print), Toast.LENGTH_SHORT
+                                , (TextView) LayoutInflater.from(mContext).inflate(R.layout.layout_toast, null));
+                        return;
+                    }
                     Intent intentType = new Intent(this, PopupWindowActivity.class);
                     intentType.putExtra("setting", "type");
                     startActivityForResult(intentType, 1);
                     break;
                 case R.id.rl_density:
+                    if (isPrint) {
+                        ToastUtil.customToastView(mContext, getString(R.string.progress_print), Toast.LENGTH_SHORT
+                                , (TextView) LayoutInflater.from(mContext).inflate(R.layout.layout_toast, null));
+                        return;
+                    }
                     Intent intentDensity = new Intent(this, PopupWindowActivity.class);
                     intentDensity.putExtra("setting", "density");
                     startActivityForResult(intentDensity, 2);
                     break;
                 case R.id.btn_aligning:
+                    if (isPrint) {
+                        ToastUtil.customToastView(mContext, getString(R.string.progress_print), Toast.LENGTH_SHORT
+                                , (TextView) LayoutInflater.from(mContext).inflate(R.layout.layout_toast, null));
+                        return;
+                    }
                     mPresenter.printAligning();
                     break;
                 default:
@@ -294,6 +334,16 @@ public class PrintSettingActivity extends BaseMvpActivity<PrintSettingPresenter>
         }
         statusName.setText(BaseApp.deviceName);
         statusAddress.setText(BaseApp.deviceAddress);
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (isPrint) {
+            isPrint = false;
+            mPresenter.stopFatigueTest();
+            tvFatigue.setText(getString(R.string.start_fatigue_test));
+        }
+        super.onDestroy();
     }
 
     private void setPaperType(int i) {
