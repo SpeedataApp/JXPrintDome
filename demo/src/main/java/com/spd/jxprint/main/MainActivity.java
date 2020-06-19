@@ -17,6 +17,7 @@ import com.spd.jxprint.main.presenter.MainPresenter;
 import com.spd.jxprint.pictureprint.PrintPictureActivity;
 import com.spd.jxprint.setting.PrintSettingActivity;
 import com.spd.jxprint.textprint.PrintTextActivity;
+import com.spd.jxprint.utils.CheckPrinterStatus;
 import com.spd.lib.mvp.BaseMvpActivity;
 import com.spd.print.jx.constant.PrintConstant;
 import com.spd.print.jx.inter.IConnectCallback;
@@ -109,10 +110,14 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements View
         mPresenter.initPrint(typeInt, densityInt);
         ToastUtil.customToastView(mContext, getString(R.string.toast_success), Toast.LENGTH_SHORT
                 , (TextView) LayoutInflater.from(mContext).inflate(R.layout.layout_toast, null));
+        //开启缺纸检测
+        CheckPrinterStatus.getInstance(mContext).startCheck();
     }
 
     @Override
     public void onPrinterConnectFailed(int errorCode) {
+        //关闭缺纸检测
+        CheckPrinterStatus.getInstance(mContext).stopCheck();
         BaseApp.isConnection = false;
         BaseApp.deviceName = getResources().getString(R.string.status_disconnect);
         BaseApp.deviceAddress = getResources().getString(R.string.status_disconnect);

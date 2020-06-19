@@ -23,7 +23,6 @@
     <string name="toast_operation_fail">fail</string>
 
 
-
     <!--main-->
     <string name="status_disconnect">disconnect</string>
     <string name="device_name">device name：</string>
@@ -58,6 +57,7 @@
     <string name="picture_canvas_print">the canvas way</string>
     <string name="print_bitmap_test">printing monochromatic bitmap demo：\n</string>
     <string name="print_bitmap_end_test">printing finished</string>
+    <string name="print_canvas_test">print canvas examples:</string>
 
     <!--条码打印-->
     <string name="barcode_print_ex">1D code printing examples</string>
@@ -141,5 +141,6 @@
     <string name="dialog_update_tips">An interruption in the upgrade process may cause the printer to not work properly. Are you sure you want to upgrade the firmware?</string>
     <string name="ok">OK</string>
     <string name="cancel">cancel</string>
+    <string name="out_of_paper">Printer out of paper</string>
 
 </resources>

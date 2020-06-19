@@ -58,6 +58,7 @@
     <string name="picture_canvas_print">画布方式</string>
     <string name="print_bitmap_test">打印单色位图演示：\n</string>
     <string name="print_bitmap_end_test">打印结束\n</string>
+    <string name="print_canvas_test">打印画布效果演示：</string>
 
     <!--条码打印-->
     <string name="barcode_print_ex">一维码打印示例</string>
@@ -136,4 +137,5 @@
     <string name="dialog_update_tips">升级过程发生中断可能导致打印机无法正常工作，确定升级固件吗？</string>
     <string name="ok">确认</string>
     <string name="cancel">取消</string>
+    <string name="out_of_paper">打印机缺纸</string>
 </resources>

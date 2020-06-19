@@ -16,10 +16,12 @@ import com.google.zxing.qrcode.QRCodeWriter;
 import com.printer.sdk.CanvasPrint;
 import com.printer.sdk.FontProperty;
 import com.printer.sdk.PrinterConstants;
+import com.spd.jxprint.R;
 import com.spd.jxprint.application.BaseApp;
 import com.spd.jxprint.setting.PrintSettingActivity;
 import com.spd.jxprint.setting.contract.PrintSettingContract;
 import com.spd.jxprint.setting.model.PrintSettingModel;
+import com.spd.jxprint.utils.CanvasUtils;
 import com.spd.jxprint.utils.XTUtils;
 import com.spd.lib.mvp.BasePresenter;
 import com.spd.print.jx.constant.ParamsConstant;
@@ -110,7 +112,7 @@ public class PrintSettingPresenter extends BasePresenter<PrintSettingActivity, P
 
     public void test() {
         //生成二维码图片
-        Bitmap bitmapQrCode = PictureUtils.createBitmapQrCode("物料编号",120,120);
+        Bitmap bitmapQrCode = PictureUtils.createBitmapQrCode("物料编号", 120, 120);
         //创建画布
         CanvasPrint cp = new CanvasPrint();
         //初始化画布
@@ -128,7 +130,7 @@ public class PrintSettingPresenter extends BasePresenter<PrintSettingActivity, P
         //将文字画到画布上指定坐标处
         cp.drawText(10, 30, "物料名称：");
         try {
-            cp.drawText(10,60,150,40,"物料名称wuliaomingcheng物料名称wuliaomingcheng");
+            cp.drawText(10, 60, 150, 40, "物料名称wuliaomingcheng物料名称wuliaomingcheng");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -209,12 +211,16 @@ public class PrintSettingPresenter extends BasePresenter<PrintSettingActivity, P
             public void run() {
                 //do something
                 try {
+                    BaseApp.getPrinterImpl().printText(resources.getString(R.string.print_canvas_test) + "\n");
+                    new CanvasUtils().printCustomImage(resources, BaseApp.getPrinterImpl().getPrinter());
                     XTUtils.printNote(resources, BaseApp.getPrinterImpl());
+                    XTUtils.printBarcodeEx(resources, BaseApp.getPrinterImpl());
+                    XTUtils.printQrCodeEx(resources, BaseApp.getPrinterImpl());
                 } catch (RuntimeException e) {
                     e.printStackTrace();
                 }
             }
-        }, 0, 6, TimeUnit.SECONDS);
+        }, 0, 15, TimeUnit.SECONDS);
 
     }
 
@@ -232,7 +238,7 @@ public class PrintSettingPresenter extends BasePresenter<PrintSettingActivity, P
         public void run() {
             super.run();
             Looper.prepare();
-            SystemClock.sleep(2000);
+            SystemClock.sleep(6000);
             InputStream in = null;
             //创建文件夹
             File f = new File("/sdcard/Android/data/updata");
@@ -240,9 +246,9 @@ public class PrintSettingPresenter extends BasePresenter<PrintSettingActivity, P
                 f.mkdir();
             }
             //复制升级文件到指定目录
-            copyFilesFromassets(getView(), "T581U0.73-V0.16-sbtV06.bin", "/sdcard/Android/data/updata/T581U0.73-V0.16-sbtV06.bin");
+            copyFilesFromassets(getView(), "T581U0.73-V0.16-sbtV07.bin", "/sdcard/Android/data/updata/T581U0.73-V0.16-sbtV07.bin");
             //获取升级文件
-            File fileParent = new File("/sdcard/Android/data/updata/T581U0.73-V0.16-sbtV06.bin");
+            File fileParent = new File("/sdcard/Android/data/updata/T581U0.73-V0.16-sbtV07.bin");
             try {
                 in = new FileInputStream(fileParent);
 
@@ -252,7 +258,7 @@ public class PrintSettingPresenter extends BasePresenter<PrintSettingActivity, P
             }
             int a = 0;
             try {
-                a = BaseApp.getPrinterImpl().update(in, "35 31 33 35 32");
+                a = BaseApp.getPrinterImpl().update(in, "35 31 37 30 34");
                 if (a == -2) {
                     getView().onUpdateSuccess();
                 } else {

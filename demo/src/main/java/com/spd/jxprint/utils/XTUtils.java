@@ -2,6 +2,8 @@ package com.spd.jxprint.utils;
 
 import android.content.res.Resources;
 
+import com.printer.sdk.Barcode;
+import com.printer.sdk.PrinterConstants;
 import com.printer.sdk.PrinterConstants.Command;
 import com.printer.sdk.PrinterInstance;
 import com.printer.sdk.Table;
@@ -43,7 +45,7 @@ public class XTUtils {
         mPrinter.setPrinter(2, Command.ALIGN_CENTER);
         mPrinter.setFont(0, 0, 1, 0, 0);
         mPrinter.printText(resources.getString(R.string.shop_thanks) + "\n");
-        mPrinter.printText(resources.getString(R.string.shop_demo) + "\n\n\n");
+        mPrinter.printText(resources.getString(R.string.shop_demo) + "\n");
 
         mPrinter.setFont(0, 0, 0, 0, 0);
         mPrinter.setPrinter(2, Command.ALIGN_LEFT);
@@ -183,6 +185,27 @@ public class XTUtils {
         mPrinter.setFont(0, 0, 0, 0, 0);
         mPrinter.setPrinter(2, 0);
         mPrinter.setPrinter(Command.PRINT_AND_WAKE_PAPER_BY_LINE, 1);
+    }
+
+    public static void printBarcodeEx(Resources resources, PrintImpl mPrinter) {
+        mPrinter.initPrinter();
+        mPrinter.printText(resources.getString(R.string.barcode_print_ex) + "\n");
+        mPrinter.setPrinter(2, 1);
+        Barcode barcode1 = new Barcode(PrinterConstants.BarcodeType.CODE128, 2, 150, 2, "(10)CEDIS-1");
+        mPrinter.printBarCode(barcode1);
+        mPrinter.setPrinter(2, 0);
+        mPrinter.setPrinter(1, 3);
+    }
+
+    public static void printQrCodeEx(Resources resources, PrintImpl mPrinter) {
+        mPrinter.initPrinter();
+        mPrinter.printText(resources.getString(R.string.qr_code_print_ex) + "\n");
+        mPrinter.setPrinter(2, 1);
+        Barcode barcode2 = new Barcode(PrinterConstants.BarcodeType.QRCODE, 2, 3, 6, "123456");
+        mPrinter.printBarCode(barcode2);
+        mPrinter.setPrinter(2, 0);
+        mPrinter.setPrinter(1, 3);
+
     }
 
 }
